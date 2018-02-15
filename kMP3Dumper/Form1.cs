@@ -33,12 +33,15 @@ namespace kMP3Dumper
             {
                 new Thread((ThreadStart)(() =>
                 {
+                    var procargs = "";
+                    if (radioButton2.Checked) { procargs = Properties.Resources.ytdl_args + " --yes-playlist " + textBox1.Text; }
+                    if (radioButton3.Checked) { procargs = Properties.Resources.ytdl_args + " --no-playlist " + textBox1.Text; }
                     var proc = new Process
                     {
                         StartInfo = new ProcessStartInfo
                         {
                             FileName = "youtube-dl.exe",
-                            Arguments = Properties.Resources.ytdl_args + " " + textBox1.Text,
+                            Arguments = procargs,
                             UseShellExecute = false,
                             RedirectStandardOutput = true,
                             CreateNoWindow = true
@@ -48,6 +51,7 @@ namespace kMP3Dumper
                     button2.Text = "Downloading...";
                     button2.Enabled = false;
                     button1.Enabled = false;
+                    groupBox4.Enabled = false;
                     textBox1.ReadOnly = true;
                     textBox2.ReadOnly = true;
                     proc.Start();
@@ -64,6 +68,7 @@ namespace kMP3Dumper
                     button2.Text = "Download";
                     button2.Enabled = true;
                     button1.Enabled = true;
+                    groupBox4.Enabled = true;
                     textBox1.ReadOnly = false;
                     textBox2.ReadOnly = false;
                     MessageBox.Show("Done!", "kPanel - MP3 Dumper", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -127,6 +132,11 @@ namespace kMP3Dumper
             {
                 MessageBox.Show("Something went wrong." + Environment.NewLine + "--------------------------------------" + Environment.NewLine + ex, "kPanel - MP3 Dumper", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

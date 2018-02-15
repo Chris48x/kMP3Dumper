@@ -39,19 +39,23 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.Log = new System.Windows.Forms.RichTextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.AlbumArt = new System.Windows.Forms.PictureBox();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.LoadTags = new System.Windows.Forms.OpenFileDialog();
-            this.AlbumArt = new System.Windows.Forms.PictureBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AlbumArt)).BeginInit();
             this.SuspendLayout();
@@ -60,7 +64,7 @@
             // 
             this.textBox1.Location = new System.Drawing.Point(68, 19);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(296, 20);
+            this.textBox1.Size = new System.Drawing.Size(173, 20);
             this.textBox1.TabIndex = 0;
             // 
             // label1
@@ -76,7 +80,7 @@
             // 
             this.textBox2.Location = new System.Drawing.Point(68, 45);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(253, 20);
+            this.textBox2.Size = new System.Drawing.Size(129, 20);
             this.textBox2.TabIndex = 2;
             // 
             // label2
@@ -90,7 +94,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(327, 43);
+            this.button1.Location = new System.Drawing.Point(203, 44);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(38, 23);
             this.button1.TabIndex = 4;
@@ -102,7 +106,7 @@
             // 
             this.button2.Location = new System.Drawing.Point(6, 72);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(358, 23);
+            this.button2.Size = new System.Drawing.Size(235, 23);
             this.button2.TabIndex = 5;
             this.button2.Text = "Download";
             this.button2.UseVisualStyleBackColor = true;
@@ -129,6 +133,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.groupBox4);
             this.groupBox2.Controls.Add(this.button2);
             this.groupBox2.Controls.Add(this.textBox1);
             this.groupBox2.Controls.Add(this.label1);
@@ -141,6 +146,39 @@
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Media";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.radioButton3);
+            this.groupBox4.Controls.Add(this.radioButton2);
+            this.groupBox4.Location = new System.Drawing.Point(247, 19);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(117, 76);
+            this.groupBox4.TabIndex = 6;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Download Mode";
+            // 
+            // radioButton3
+            // 
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Location = new System.Drawing.Point(20, 45);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(76, 17);
+            this.radioButton3.TabIndex = 2;
+            this.radioButton3.Text = "Video Only";
+            this.radioButton3.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Checked = true;
+            this.radioButton2.Location = new System.Drawing.Point(20, 23);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(57, 17);
+            this.radioButton2.TabIndex = 1;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "Playlist";
+            this.radioButton2.UseVisualStyleBackColor = true;
             // 
             // groupBox3
             // 
@@ -158,7 +196,52 @@
             this.groupBox3.Size = new System.Drawing.Size(370, 309);
             this.groupBox3.TabIndex = 8;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Tags";
+            this.groupBox3.Text = "ID3 Tag Editor";
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(45, 65);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(320, 20);
+            this.textBox5.TabIndex = 9;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(7, 68);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(39, 13);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "Album:";
+            // 
+            // AlbumArt
+            // 
+            this.AlbumArt.Location = new System.Drawing.Point(6, 87);
+            this.AlbumArt.Name = "AlbumArt";
+            this.AlbumArt.Size = new System.Drawing.Size(358, 158);
+            this.AlbumArt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.AlbumArt.TabIndex = 8;
+            this.AlbumArt.TabStop = false;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(6, 251);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(358, 23);
+            this.button4.TabIndex = 7;
+            this.button4.Text = "Load";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(6, 280);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(358, 23);
+            this.button3.TabIndex = 6;
+            this.button3.Text = "Apply";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // textBox3
             // 
@@ -193,54 +276,9 @@
             this.label4.TabIndex = 3;
             this.label4.Text = "Artist:";
             // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(6, 280);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(358, 23);
-            this.button3.TabIndex = 6;
-            this.button3.Text = "Apply";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(6, 251);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(358, 23);
-            this.button4.TabIndex = 7;
-            this.button4.Text = "Load";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
             // LoadTags
             // 
             this.LoadTags.FileName = "File.mp3";
-            // 
-            // AlbumArt
-            // 
-            this.AlbumArt.Location = new System.Drawing.Point(6, 87);
-            this.AlbumArt.Name = "AlbumArt";
-            this.AlbumArt.Size = new System.Drawing.Size(358, 158);
-            this.AlbumArt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.AlbumArt.TabIndex = 8;
-            this.AlbumArt.TabStop = false;
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(45, 65);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(320, 20);
-            this.textBox5.TabIndex = 9;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(7, 68);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(39, 13);
-            this.label5.TabIndex = 10;
-            this.label5.Text = "Album:";
             // 
             // Form1
             // 
@@ -256,9 +294,12 @@
             this.MinimumSize = new System.Drawing.Size(782, 366);
             this.Name = "Form1";
             this.Text = "kPanel - MP3 Dumper";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AlbumArt)).EndInit();
@@ -289,6 +330,9 @@
         private System.Windows.Forms.PictureBox AlbumArt;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.RadioButton radioButton2;
     }
 }
 

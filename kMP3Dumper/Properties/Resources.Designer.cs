@@ -121,7 +121,7 @@ namespace kMP3Dumper.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to --no-mtime --embed-thumbnail --add-metadata --metadata-from-title &quot;(?P&lt;artist&gt;.+?) - (?P&lt;title&gt;.+)&quot; --xattrs --no-warnings -x --restrict-filenames -o &quot;%(title)s.%(ext)s&quot; --audio-format mp3 --audio-quality 0.
+        ///   Looks up a localized string similar to --no-mtime --embed-thumbnail --add-metadata --metadata-from-title &quot;(?P&lt;artist&gt;.+?) - (?P&lt;title&gt;.+)&quot; --xattrs -i --no-warnings -x --restrict-filenames -o &quot;%(title)s.%(ext)s&quot; --audio-format mp3 --audio-quality 0.
         /// </summary>
         internal static string ytdl_args {
             get {

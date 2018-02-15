@@ -30,6 +30,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>if_11_2133137.ico</ApplicationIcon>
@@ -90,12 +91,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resx\ffprobe.exe" />
+    <None Include="Resx\ffplay.exe" />
     <None Include="Resx\policy.2.0.taglib-sharp.dll" />
     <None Include="Resx\taglib-sharp.dll" />
     <None Include="Resx\ffmpeg.exe" />
     <None Include="Resx\youtube-dl.exe" />
-    <None Include="Resx\ffprobe.exe" />
-    <None Include="Resx\ffplay.exe" />
     <Content Include="if_11_2133137.ico" />
   </ItemGroup>
   <ItemGroup>
