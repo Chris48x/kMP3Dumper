@@ -137,6 +137,6 @@
     <value>..\Resx\youtube-dl.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="ytdl_args" xml:space="preserve">
-    <value>--no-mtime --embed-thumbnail --add-metadata --metadata-from-title "(?P&lt;artist&gt;.+?) - (?P&lt;title&gt;.+)" --xattrs -i --no-warnings -x --restrict-filenames -o "%(title)s.%(ext)s" --audio-format mp3 --audio-quality 0</value>
+    <value>--no-mtime --embed-thumbnail --add-metadata --metadata-from-title "(?P&lt;artist&gt;.+?) - (?P&lt;title&gt;.+)" --xattrs -i --no-warnings -x --restrict-filenames -o "%(title)s.%(ext)s"</value>
   </data>
 </root>

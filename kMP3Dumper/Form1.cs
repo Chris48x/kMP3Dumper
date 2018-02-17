@@ -15,6 +15,14 @@ namespace kMP3Dumper
 {
     public partial class Form1 : Form
     {
+
+        public const int WM_NCLBUTTONDOWN = 0xA1;
+        public const int HT_CAPTION = 0x2;
+
+        [System.Runtime.InteropServices.DllImportAttribute("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        [System.Runtime.InteropServices.DllImportAttribute("user32.dll")]
+        public static extern bool ReleaseCapture();
         public Form1()
         {
             InitializeComponent();
@@ -25,17 +33,32 @@ namespace kMP3Dumper
             if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + "\\taglib-sharp.dll")) { File.WriteAllBytes(AppDomain.CurrentDomain.BaseDirectory + "\\taglib-sharp.dll", Properties.Resources.taglib_sharp); }
             if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + "\\policy.2.0.taglib-sharp.dll")) { File.WriteAllBytes(AppDomain.CurrentDomain.BaseDirectory + "\\policy.2.0.taglib-sharp.dll", Properties.Resources.policy_2_0_taglib_sharp); }
             Control.CheckForIllegalCrossThreadCalls = false;
+            comboBox1.SelectedIndex = 0;
+            panel1.MouseDown += Form1_MouseDown;
+            panel3.MouseDown += Form1_MouseDown;
+            label6.MouseDown += Form1_MouseDown;
+            label7.MouseDown += Form1_MouseDown;
         }
 
+        private void Form1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
+        }
         private void button2_Click(object sender, EventArgs e)
         {
             if ((textBox1.Text.Length > 3) && (textBox2.Text.Length > 3))
             {
+                if (AppDomain.CurrentDomain.BaseDirectory != textBox2.Text) //Will fix in next release
+                {
                 new Thread((ThreadStart)(() =>
                 {
                     var procargs = "";
-                    if (radioButton2.Checked) { procargs = Properties.Resources.ytdl_args + " --yes-playlist " + textBox1.Text; }
-                    if (radioButton3.Checked) { procargs = Properties.Resources.ytdl_args + " --no-playlist " + textBox1.Text; }
+                    if (radioButton2.Checked) { procargs = Properties.Resources.ytdl_args + " --yes-playlist --audio-quality " + trackBar1.Value.ToString() + " --audio-format " + comboBox1.SelectedItem.ToString() + " " + textBox1.Text; }
+                    if (radioButton3.Checked) { procargs = Properties.Resources.ytdl_args + " --no-playlist --audio-quality " + trackBar1.Value.ToString() + " --audio-format " + comboBox1.SelectedItem.ToString() + " " + textBox1.Text; }
                     var proc = new Process
                     {
                         StartInfo = new ProcessStartInfo
@@ -51,7 +74,7 @@ namespace kMP3Dumper
                     button2.Text = "Downloading...";
                     button2.Enabled = false;
                     button1.Enabled = false;
-                    groupBox4.Enabled = false;
+                    groupBox5.Enabled = false;
                     textBox1.ReadOnly = true;
                     textBox2.ReadOnly = true;
                     proc.Start();
@@ -59,20 +82,37 @@ namespace kMP3Dumper
                     {
                         Log.AppendText(proc.StandardOutput.ReadLine() + Environment.NewLine);
                     }
-                    string[] files = System.IO.Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory, "*.mp3");
+                    string[] files;
+                    if (comboBox1.SelectedItem.ToString() == "opus")
+                    {
+                        files = System.IO.Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory, "*.opus");
+                    } else if (comboBox1.SelectedItem.ToString() == "vorbis")
+                    {
+                        files = System.IO.Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory, "*.ogg");
+                    }
+                    else
+                    {
+                        files = System.IO.Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory, "*." + comboBox1.SelectedItem.ToString());
+                    }
                     foreach (string dlfile in files)
                     {
                         File.Copy(dlfile, textBox2.Text + "\\" + dlfile.Replace(AppDomain.CurrentDomain.BaseDirectory, ""));
                         File.Delete(dlfile);
                     }
+                    string[] albart_imgs = System.IO.Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory, "*.jpg");
+                    foreach (string aaimg in albart_imgs)
+                    {
+                        File.Delete(aaimg);
+                    }
                     button2.Text = "Download";
                     button2.Enabled = true;
                     button1.Enabled = true;
-                    groupBox4.Enabled = true;
+                    groupBox5.Enabled = true;
                     textBox1.ReadOnly = false;
                     textBox2.ReadOnly = false;
                     MessageBox.Show("Done!", "kPanel - MP3 Dumper", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 })).Start();
+            } else { MessageBox.Show("Please select a save location outside of the program's installed location!", "kPanel - MP3 Dumper", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); }
             } else
             {
                 MessageBox.Show("Please provide a valid URL and Save Path!", "kPanel - MP3 Dumper", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -137,6 +177,37 @@ namespace kMP3Dumper
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedIndex = 0;
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedIndex = 1;
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedIndex = 2;
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("https://github.com/knackrack615/kMP3Dumper");
+        }
+
+        private void Log_TextChanged(object sender, EventArgs e)
+        {
+            Log.SelectionStart = Log.Text.Length;
+            Log.ScrollToCaret();
         }
     }
 }
